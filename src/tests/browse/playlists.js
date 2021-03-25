@@ -26,7 +26,7 @@ describe('Spotify api test', () => {
     });
 
     it('get playlist cover image', async () => {
-        const component = `/playlists/${playlistID}/images`;
+        const component = `/playlists/${playlistID}ge/images`;
         await API_ACTIONS.get(component).then(res => {
             expect(res.status).toBe(200);
             expect(res.data.length).toBeGreaterThan(0);
