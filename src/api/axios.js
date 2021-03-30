@@ -7,15 +7,35 @@ const API_ACTIONS = {
         try {
             return (await Axios.get(componentUrl, conf));
         } catch (err) {
-            if (err.isAxiosError) {
-                throw new Error(`Axios: ${err.message} \nApi: ${err.response.data.error.message}`);
-            } else {
-                throw new Error(`unknown: ${err.message}`)
+            if (!err.isAxiosError) {
+                throw new Error(`Test error: ${err.message}`);
             }
+
+            return (err.response);
         }
     },
-    post: () => { },
-    update: () => { }
+    post: async (componentUrl, query) => {
+        try {
+            return (await Axios.post(componentUrl, query, conf));
+        } catch (err) {
+            if (!err.isAxiosError) {
+                throw new Error(`Test error: ${err.message}`);
+            }
+
+            return (err.response);
+        }
+    },
+    put: async (componentUrl, query) => {
+        try {
+            return (await Axios.put(componentUrl, query, conf));
+        } catch (err) {
+            if (!err.isAxiosError) {
+                throw new Error(`Test error: ${err.message}`);
+            }
+
+            return (err.response);
+        }
+    }
 }
 
 module.exports = API_ACTIONS
