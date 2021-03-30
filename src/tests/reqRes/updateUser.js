@@ -7,14 +7,14 @@ describe('put api test', () => {
     });
 
     it('should update a user', async () => {
-        const component = "/users/2";
+        const users = "/users/2";
         const ourNewUser = {
             first_name: "QA",
             last_name: "Update"
         }
-        await API_ACTIONS.put(component, ourNewUser).then(res => {
-            expect(res.status).toBe(200);
-            expect(Object.keys(res.data)).toContain("updatedAt");
+        await API_ACTIONS.put(users, ourNewUser).then(response => {
+            expect(response.status).toBe(200);
+            expect(Object.keys(response.data)).toContain("updatedAt");
         });
     });
 });

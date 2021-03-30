@@ -1,7 +1,7 @@
 const API_ACTIONS = require("../../api/axios")
 const options = require("../../api/config")
 
-describe('post api test - register', () => {
+describe('register api test - post', () => {
     beforeAll(() => {
         options.baseURL = "https://reqres.in/api";
     });

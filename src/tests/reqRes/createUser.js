@@ -14,10 +14,10 @@ describe('post api test', () => {
             email: "QA_guilde@gmail.com"
 
         }
-        await API_ACTIONS.post(component, ourNewUser).then(res => {
-            expect(res.status).toBe(201);
-            expect(Object.keys(res.data)).toContain("id");
-            console.log(res.data);
+        await API_ACTIONS.post(component, ourNewUser).then(response => {
+            expect(response.status).toBe(201);
+            expect(Object.keys(response.data)).toContain("id");
+            console.log(response.data);
         });
     });
 });
