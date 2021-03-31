@@ -12,5 +12,8 @@
   "dependencies": {
     "@types/jasmine": "^3.6.7",
     "jasmine": "^3.7.0"
+  },
+  "devDependencies": {
+    "axios": "^0.21.1"
   }
 }
