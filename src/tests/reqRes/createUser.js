@@ -7,14 +7,14 @@ describe('post api test', () => {
     });
 
     it('should post a new user', async () => {
-        const component = "/users";
+        const users = "/users";
         const ourNewUser = {
             first_name: "QA",
             last_name: "Developer",
             email: "QA_guilde@gmail.com"
 
         }
-        await API_ACTIONS.post(component, ourNewUser).then(response => {
+        await API_ACTIONS.post(users, ourNewUser).then(response => {
             expect(response.status).toBe(201);
             expect(Object.keys(response.data)).toContain("id");
             console.log(response.data);

@@ -13,12 +13,12 @@ describe('Spotify api test', () => {
     });
 
     it('should get all featured playlists', async () => {
-        const component = "/browse/featured-playlists";
+        const playlists = "/browse/featured-playlists";
         const params = {
             country: "IL",
             limit: 1
         }
-        await API_ACTIONS.get(component, params).then(res => {
+        await API_ACTIONS.get(playlists, params).then(res => {
             expect(res.status).toBe(200);
             expect(res.data).not.toBe(undefined);
             playlistID = res.data.playlists.items[0].id;
@@ -26,8 +26,8 @@ describe('Spotify api test', () => {
     });
 
     it('get playlist cover image', async () => {
-        const component = `/playlists/${playlistID}/images`;
-        await API_ACTIONS.get(component).then(res => {
+        const playlists = `/playlists/${playlistID}/images`;
+        await API_ACTIONS.get(playlists).then(res => {
             expect(res.status).toBe(200);
             expect(res.data.length).toBeGreaterThan(0);
             console.log(res.data[0].url);
