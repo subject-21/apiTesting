@@ -35,6 +35,28 @@ const API_ACTIONS = {
 
             return (err.response);
         }
+    },
+    patch: async (endpointUrl, query) => {
+        try {
+            return (await Axios.patch(endpointUrl, query, conf));
+        } catch (err) {
+            if (!err.isAxiosError) {
+                throw new Error(`Test error: ${err.message}`);
+            }
+
+            return (err.response);
+        }
+    },
+    delete: async (endpointUrl, query) => {
+        try {
+            return (await Axios.delete(endpointUrlff, conf));
+        } catch (err) {
+            if (!err.isAxiosError) {
+                throw new Error(`Test error: ${err.message}`);
+            }
+
+            return (err.response);
+        }
     }
 }
 
