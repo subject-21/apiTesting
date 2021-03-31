@@ -47,9 +47,9 @@ const API_ACTIONS = {
             return (err.response);
         }
     },
-    delete: async (endpointUrl, query) => {
+    delete: async (endpointUrl) => {
         try {
-            return (await Axios.delete(endpointUrlff, conf));
+            return (await Axios.delete(endpointUrl, conf));
         } catch (err) {
             if (!err.isAxiosError) {
                 throw new Error(`Test error: ${err.message}`);
