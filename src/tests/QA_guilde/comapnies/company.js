@@ -59,7 +59,7 @@ describe('QA Guilde Api', () => {
         });
     });
 
-    xit('should update requested company', async () => {
+    it('should update requested company', async () => {
         const ourCompany = `/companies/${ourCompanyId}`;
         const companyUpdate = {
             name: "updateCompany"
