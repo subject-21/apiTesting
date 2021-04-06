@@ -14,7 +14,9 @@ const API_ACTIONS = {
             return (err.response);
         }
     },
-    post: async (endpointUrl, query) => {
+    post: async (endpointUrl, query, headers = null, params = null) => {
+        headers ? conf.headers = headers : null;
+        params ? conf.params = params : null
         try {
             return (await Axios.post(endpointUrl, query, conf));
         } catch (err) {
@@ -47,7 +49,9 @@ const API_ACTIONS = {
             return (err.response);
         }
     },
-    delete: async (endpointUrl) => {
+    delete: async (endpointUrl, headers = null, params = null) => {
+        headers ? conf.headers = headers : null;
+        params ? conf.params = params : null
         try {
             return (await Axios.delete(endpointUrl, conf));
         } catch (err) {
