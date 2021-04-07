@@ -1,7 +1,7 @@
 {
   "name": "api-testing",
   "version": "1.0.0",
-  "description": "e2e tests for rest api servers",
+  "description": "e2e tests for rest api servers using Axios library",
   "main": "axios.js",
   "scripts": {
     "jasmine-run-tests": "jasmine --config=jasmine.json"
