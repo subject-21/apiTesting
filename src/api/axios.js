@@ -1,7 +1,7 @@
 const Axios = require("axios").default;
 const conf = require("./config");
 const handleResponse = require("./utils/handleResponse");
-
+const TestError = require("./utils/testError");
 class ApiMethods {
     constructor() {
         this.methodType = {
@@ -23,10 +23,8 @@ class ApiMethods {
         } else if (method === this.methodType.GET || method === this.methodType.DELETE) {
             return await handleResponse(Axios, method, [endpointUrl, conf]);
         } else {
-            const err = new Error(`"${method}" is invalid`);
-            err.Level = "Test";
-            err.validOptions = Object.keys(this.methodType);
-            throw err;
+            throw new TestError(`"${method}" is invalid`,
+                `valid methods are: ${Object.values(this.methodType)}`);
         }
     }
 }
