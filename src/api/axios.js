@@ -1,6 +1,6 @@
 const Axios = require("axios").default;
 const conf = require("./config");
-const handleResponse = require("./utils");
+const handleResponse = require("./utils/handleResponse");
 
 class ApiMethods {
     constructor() {

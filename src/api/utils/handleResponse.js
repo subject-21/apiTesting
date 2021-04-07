@@ -1,3 +1,4 @@
+/** @returns {Promise<import("axios").AxiosResponse>} */
 const handleResponse = async (axiosInstance, method, args) => {
     try {
         return await (axiosInstance[method].apply(this, args));
