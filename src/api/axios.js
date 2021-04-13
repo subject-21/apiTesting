@@ -27,6 +27,16 @@ class ApiMethods {
                 `valid methods are: ${Object.values(this.methodType)}`);
         }
     }
+
+    async graphQl(query, variables, headers = null, url = null) {
+        headers ? conf.headers = headers : null;
+        const data = {
+            query: `${query}`,
+            variables: `${variables}`
+        }
+
+        return await handleResponse(Axios, this.methodType.POST, [url, data, conf]);
+    }
 }
 
 module.exports = ApiMethods
