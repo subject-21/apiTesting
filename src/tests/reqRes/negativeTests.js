@@ -1,9 +1,10 @@
-const API_ACTIONS = require("../../api/axios")
-const options = require("../../api/config")
+const Actions = require("../../api/axios")
 
 describe('api negative tests', () => {
+    const API_ACTIONS = new Actions();
+
     beforeAll(() => {
-        options.baseURL = "https://reqres.in/api";
+        API_ACTIONS.requestOptions.baseURL = "https://reqres.in/api";
     });
 
     it('should fail registeration with Missing email', async () => {
@@ -11,7 +12,7 @@ describe('api negative tests', () => {
         const registerationData = {
             password: "1234"
         }
-        await API_ACTIONS.post(registeration, registerationData).then(response => {
+        await API_ACTIONS.restApiRequest(API_ACTIONS.methodType.POST, registeration, { bodyData: registerationData }).then(response => {
             expect(response.status).toBe(400);
             expect(response.data.error).toEqual("Missing email or username");
         });
@@ -22,7 +23,7 @@ describe('api negative tests', () => {
         const registerationData = {
             email: "QA_Negative_Test@gmail.com"
         }
-        await API_ACTIONS.post(registeration, registerationData).then(response => {
+        await API_ACTIONS.restApiRequest(API_ACTIONS.methodType.POST, registeration, { bodyData: registerationData }).then(response => {
             expect(response.status).toBe(400);
             expect(response.data.error).toEqual("Missing password");
         });
@@ -34,7 +35,7 @@ describe('api negative tests', () => {
             password: "PASSWORD_NOT_STRONG_ENOUGH"
         }
 
-        await API_ACTIONS.post(login, userInfo).then(response => {
+        await API_ACTIONS.restApiRequest(API_ACTIONS.methodType.POST, login, { bodyData: userInfo }).then(response => {
             expect(response.status).toBe(400);
             expect(response.data.error).toEqual("Missing email or username");
         });
@@ -46,7 +47,7 @@ describe('api negative tests', () => {
             email: "iLoveMcDonalds@gmail.com"
         }
 
-        await API_ACTIONS.post(login, userInfo).then(response => {
+        await API_ACTIONS.restApiRequest(API_ACTIONS.methodType.POST, login, { bodyData: userInfo }).then(response => {
             expect(response.status).toBe(400);
             expect(response.data.error).toEqual("Missing password");
         });

@@ -11,17 +11,17 @@ class ApiMethods {
             PATCH: "patch",
             POST: "post"
         }
-        this.options = conf;
+        this.requestOptions = conf;
     }
 
-    async request(method, endpointUrl, { bodyData, headers, params } = {}) {
-        headers ? conf.headers = headers : null;
-        params ? conf.params = params : null
+    async restApiRequest(method, endpointUrl, { bodyData, headers, params } = {}) {
+        headers ? this.requestOptions.headers = headers : null;
+        params ? this.requestOptions.params = params : null
 
         if (method === this.methodType.POST || method === this.methodType.PUT || method === this.methodType.PATCH) {
-            return await handleResponse(Axios, method, [endpointUrl, bodyData, conf]);
+            return await handleResponse(Axios, method, [endpointUrl, bodyData, this.requestOptions]);
         } else if (method === this.methodType.GET || method === this.methodType.DELETE) {
-            return await handleResponse(Axios, method, [endpointUrl, conf]);
+            return await handleResponse(Axios, method, [endpointUrl, this.requestOptions]);
         } else {
             throw new TestError(`"${method}" is invalid`,
                 `valid methods are: ${Object.values(this.methodType)}`);

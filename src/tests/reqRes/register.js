@@ -1,9 +1,9 @@
-const ApiMethods = require("../../api/refactor");
+const Actions = require("../../api/axios");
 
 describe('register api test - post', () => {
-    let API_ACTIONS = new ApiMethods();
+    const API_ACTIONS = new Actions();
     beforeAll(() => {
-        API_ACTIONS.options.baseURL = "https://reqres.in/api";
+        API_ACTIONS.requestOptions.baseURL = "https://reqres.in/api";
     });
 
     it('should register to system', async () => {
@@ -13,7 +13,7 @@ describe('register api test - post', () => {
             password: "pistol"
         }
 
-        await API_ACTIONS.request(API_ACTIONS.methodType.POST, registeration, { bodyData: registerationData }).then(response => {
+        await API_ACTIONS.restApiRequest(API_ACTIONS.methodType.POST, registeration, { bodyData: registerationData }).then(response => {
             expect(response.status).toBe(200);
             expect(Object.keys(response.data)).toContain("id");
         });
@@ -24,7 +24,7 @@ describe('register api test - post', () => {
         const registerationData = {
             password: "Aa1-6"
         }
-        await API_ACTIONS.request(API_ACTIONS.methodType.POST, registeration, { bodyData: registerationData }).then(response => {
+        await API_ACTIONS.restApiRequest(API_ACTIONS.methodType.POST, registeration, { bodyData: registerationData }).then(response => {
             expect(response.status).toBe(400);
             expect(response.data.error).toEqual("Missing email or username");
         });
@@ -35,7 +35,7 @@ describe('register api test - post', () => {
         const registerationData = {
             email: "QA_Negative_Test@gmail.com"
         }
-        await API_ACTIONS.request(API_ACTIONS.methodType.POST, registeration, { bodyData: registerationData }).then(response => {
+        await API_ACTIONS.restApiRequest(API_ACTIONS.methodType.POST, registeration, { bodyData: registerationData }).then(response => {
             expect(response.status).toBe(400);
             expect(response.data.error).toEqual("Missing password");
         });
