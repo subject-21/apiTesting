@@ -28,14 +28,14 @@ class ApiMethods {
         }
     }
 
-    async graphQl(query, variables, headers = null, url = null) {
-        headers ? conf.headers = headers : null;
+    async graphQlRequest(query, variables, { headers, url } = {}) {
+        headers ? this.requestOptions.headers = headers : null;
         const data = {
             query: `${query}`,
             variables: `${variables}`
         }
 
-        return await handleResponse(Axios, this.methodType.POST, [url, data, conf]);
+        return await handleResponse(Axios, this.methodType.POST, [url, data, this.requestOptions]);
     }
 }
 
