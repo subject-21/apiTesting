@@ -28,7 +28,7 @@ class ApiMethods {
         }
     }
 
-    async graphQlRequest(query, variables, { headers, url } = {}) {
+    async graphQlRequest(query, { variables, headers, url } = {}) {
         headers ? this.requestOptions.headers = headers : null;
         const data = {
             query: `${query}`,
