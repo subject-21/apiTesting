@@ -1,9 +1,10 @@
-const API_ACTIONS = require("../../api/axios")
-const options = require("../../api/config")
+const Actions = require("../../api/axios");
 
-describe('post api test', () => {
+describe('register api test - post', () => {
+    const API_ACTIONS = new Actions();
+
     beforeAll(() => {
-        options.baseURL = "https://reqres.in/api";
+        API_ACTIONS.requestOptions.baseURL = "https://reqres.in/api";
     });
 
     it('should post a new user', async () => {
@@ -14,7 +15,7 @@ describe('post api test', () => {
             email: "QA_guilde@gmail.com"
 
         }
-        await API_ACTIONS.post(users, ourNewUser).then(response => {
+        await API_ACTIONS.restApiRequest(API_ACTIONS.methodType.POST, users, { bodyData: ourNewUser }).then(response => {
             expect(response.status).toBe(201);
             expect(Object.keys(response.data)).toContain("id");
             console.log(response.data);

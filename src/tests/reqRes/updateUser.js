@@ -1,9 +1,10 @@
-const API_ACTIONS = require("../../api/axios")
-const options = require("../../api/config")
+const Actions = require("../../api/axios")
 
 describe('put api test', () => {
+    const API_ACTIONS = new Actions();
+
     beforeAll(() => {
-        options.baseURL = "https://reqres.in/api";
+        API_ACTIONS.requestOptions.baseURL = "https://reqres.in/api";
     });
 
     it('should update a user', async () => {
@@ -12,7 +13,7 @@ describe('put api test', () => {
             first_name: "QA",
             last_name: "Update"
         }
-        await API_ACTIONS.put(users, ourNewUser).then(response => {
+        await API_ACTIONS.restApiRequest(API_ACTIONS.methodType.PUT, users, { bodyData: ourNewUser }).then(response => {
             expect(response.status).toBe(200);
             expect(Object.keys(response.data)).toContain("updatedAt");
         });

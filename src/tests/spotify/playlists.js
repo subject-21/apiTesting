@@ -1,15 +1,17 @@
-const API_ACTIONS = require("../../api/axios")
-const options = require("../../api/config")
+const Actions = require("../../api/axios")
 
 describe('Spotify api test', () => {
+    const API_ACTIONS = new Actions();
+    const token = "Bearer BQBnPUcuxpbUzFY3GakCkzIjtd7mULgeVvwLZ7ko9ZM2yDJlMbKSqK4UPGJzQQ_lUfkhZitEJ21TVmA45EVgucrRXO0B1NA2FIhqBBVx76ft3NMVDMjTlyhPuDkbAfPxZdA4DgKGXIozCNbLE_9FuIG7z71KKzwO2PNGLCc";
     let playlistID = "";
+
     beforeAll(() => {
-        options.headers = {
+        API_ACTIONS.requestOptions.headers = {
             Accept: "application/json",
             "Content-Type": "application/json",
-            Authorization: "Bearer BQBV5X6AoHMpjZpTtEDKFZqMbmghAeGmA3oKM7xJ-1baf9bBhCU_hKFW4O4JVxknMqG8hPOl9YsnLFQI3thLTPlxnFDzHhAhFLDB7Ejv4ZwarUnFjpu4OqL1_ArKkj4grlgkeHqUu4DQsfnRmBwtnTwxtc1VwW09dLKMyvM"
+            Authorization: token
         }
-        options.baseURL = "https://api.spotify.com/v1";
+        API_ACTIONS.requestOptions.baseURL = "https://api.spotify.com/v1";
     });
 
     it('should get all featured playlists', async () => {
@@ -18,7 +20,7 @@ describe('Spotify api test', () => {
             country: "IL",
             limit: 1
         }
-        await API_ACTIONS.get(playlists, params).then(res => {
+        await API_ACTIONS.restApiRequest(API_ACTIONS.methodType.GET, playlists, { params: params }).then(res => {
             expect(res.status).toBe(200);
             expect(res.data).not.toBe(undefined);
             playlistID = res.data.playlists.items[0].id;
@@ -27,9 +29,10 @@ describe('Spotify api test', () => {
 
     it('get playlist cover image', async () => {
         const playlists = `/playlists/${playlistID}/images`;
-        await API_ACTIONS.get(playlists).then(res => {
+        await API_ACTIONS.restApiRequest(API_ACTIONS.methodType.GET, playlists).then(res => {
             expect(res.status).toBe(200);
             expect(res.data.length).toBeGreaterThan(0);
+            expect(res.data[0].url).toContain("/image");
             console.log(res.data[0].url);
         });
     });
