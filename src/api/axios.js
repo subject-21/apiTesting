@@ -2,7 +2,7 @@ const Axios = require("axios").default;
 const conf = require("./config");
 const handleResponse = require("./utils/handleResponse");
 const TestError = require("./utils/testError");
-class ApiMethods {
+class Actions {
     constructor() {
         this.methodType = {
             PUT: "put",
@@ -39,4 +39,4 @@ class ApiMethods {
     }
 }
 
-module.exports = ApiMethods
+module.exports = Actions
