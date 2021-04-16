@@ -1,4 +1,4 @@
-const Actions = require("../../api/axios")
+const Actions = require("../../../api/axios")
 
 describe('api negative tests', () => {
     const API_ACTIONS = new Actions();

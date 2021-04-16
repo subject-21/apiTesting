@@ -28,7 +28,7 @@ class Actions {
         }
     }
 
-    async graphQlRequest(query, { variables, headers, url } = {}) {
+    async graphQlRequest(query, variables = null, { headers, url } = {}) {
         headers ? this.requestOptions.headers = headers : null;
         const data = {
             query: `${query}`,
