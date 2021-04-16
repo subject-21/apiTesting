@@ -1,4 +1,4 @@
-const Actions = require("../../api/axios")
+const Actions = require("../../../api/axios")
 
 describe('Spotify api test', () => {
     const API_ACTIONS = new Actions();
