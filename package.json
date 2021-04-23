@@ -4,7 +4,8 @@
   "description": "e2e tests for rest api servers using Axios library",
   "main": "axios.js",
   "scripts": {
-    "jasmine-run-tests": "jasmine --config=jasmine.json"
+    "jasmine-run-tests": "jasmine --config=jasmine.json",
+    "jest-run-tests": "jest"
   },
   "keywords": [
     "javascript, jasmine, api testing, server testing, api tests"
@@ -16,7 +17,8 @@
   "license": "ISC",
   "dependencies": {
     "@types/jasmine": "^3.6.7",
-    "jasmine": "^3.7.0"
+    "jasmine": "^3.7.0",
+    "jest": "^26.6.3"
   },
   "devDependencies": {
     "axios": "^0.21.1"
