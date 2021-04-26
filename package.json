@@ -4,7 +4,7 @@
   "description": "e2e tests for rest api servers using Axios library",
   "main": "axios.js",
   "scripts": {
-    "jasmine-run-tests": "jasmine --config=jasmine.json",
+    "jasmine-run-tests": "jasmine --config=jasmine.json && npm run generate-jasmine-report",
     "jest-run-tests": "jest",
     "generate-jasmine-report": "allure generate ./src/testResults/jasmine/dir -o ./src/testResults/jasmine/report --clean",
     "clean": "rimraf ./src/testResults/jest"
