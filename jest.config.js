@@ -16,7 +16,7 @@ module.exports = {
     "default",
     ["./node_modules/jest-html-reporter", {
       pageTitle: "Test Report",
-      outputPath: "./src/testResults/test-report.html"
+      outputPath: "./src/testResults/jest/test-report.html"
     }]
   ],
   coverageDirectory: "coverage",
