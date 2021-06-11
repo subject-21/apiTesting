@@ -1,5 +1,6 @@
 const TestError = require("./testError")
 const Reporter = require("../../../jasmineHelper").allure
+
 /** @returns {Promise<import("axios").AxiosResponse>} */
 const handleResponse = async (axiosInstance, method, args) => {
     try {
