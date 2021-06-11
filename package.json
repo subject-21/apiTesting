@@ -7,7 +7,7 @@
     "jasmine-run-tests": "jasmine --config=jasmine.json && npm run generate-jasmine-report",
     "jest-run-tests": "jest",
     "generate-jasmine-report": "allure generate ./src/testResults/jasmine/dir -o ./src/testResults/jasmine/report --clean",
-    "clean": "rimraf ./src/testResults/jest"
+    "clean": "rimraf ./src/testResults/"
   },
   "keywords": [
     "javascript, jasmine, api testing, server testing, api tests"

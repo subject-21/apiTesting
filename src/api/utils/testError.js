@@ -3,8 +3,6 @@ module.exports = class TestError extends Error {
     constructor(message, moreDetails = undefined) {
         super(message);
         this.name = this.constructor.name;
-        if (moreDetails) {
-            this.details = moreDetails;
-        }
+        moreDetails ? this.details = moreDetails : void 0
     }
 }

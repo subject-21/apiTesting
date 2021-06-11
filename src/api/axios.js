@@ -15,8 +15,8 @@ class Actions {
     }
 
     async restApiRequest(method, endpointUrl, { bodyData, headers, params } = {}) {
-        headers ? this.requestOptions.headers = headers : null;
-        params ? this.requestOptions.params = params : null
+        headers ? this.requestOptions.headers = headers : void 0;
+        params ? this.requestOptions.params = params : void 0
 
         if (method === this.methodType.POST || method === this.methodType.PUT || method === this.methodType.PATCH) {
             return await handleResponse(Axios, method, [endpointUrl, bodyData, this.requestOptions]);
@@ -29,7 +29,7 @@ class Actions {
     }
 
     async graphQlRequest(query, variables = null, { headers, url } = {}) {
-        headers ? this.requestOptions.headers = headers : null;
+        headers ? this.requestOptions.headers = headers : void 0;
         const data = {
             query: `${query}`,
             variables: `${variables}`
